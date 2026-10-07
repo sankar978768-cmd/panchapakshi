@@ -1,0 +1,10 @@
+{
+  "name": "Remix Pancha Pakshi Bird Calculator clone",
+  "description": "Calculates auspicious bird timings, sub-periods (Anthardasa), star ratings, and activity cycles for all 10 Jamas based on Pancha Pakshi Shastra.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
