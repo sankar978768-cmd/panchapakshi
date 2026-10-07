@@ -27,6 +27,83 @@
     background-color: #020617;
     color: #f8fafc;
   }
+
+  /* Theme-aware badge text & background variables for WCAG AA/AAA compliance */
+  :root {
+    --badge-rule-bg: #d1fae5;
+    --badge-rule-text: #064e3b;
+    --badge-rule-border: #86efac;
+
+    --badge-eat-bg: #ccfbf1;
+    --badge-eat-text: #134e4a;
+    --badge-eat-border: #5eead4;
+
+    --badge-walk-bg: #fef3c7;
+    --badge-walk-text: #78350f;
+    --badge-walk-border: #fcd34d;
+
+    --badge-sleep-bg: #e0e7ff;
+    --badge-sleep-text: #312e81;
+    --badge-sleep-border: #a5b4fc;
+
+    --badge-die-bg: #ffe4e6;
+    --badge-die-text: #881337;
+    --badge-die-border: #fda4af;
+
+    --badge-self-bg: #e0f2fe;
+    --badge-self-text: #0c4a6e;
+    --badge-self-border: #7dd3fc;
+
+    --badge-friend-bg: #d1fae5;
+    --badge-friend-text: #064e3b;
+    --badge-friend-border: #86efac;
+
+    --badge-enemy-bg: #ffe4e6;
+    --badge-enemy-text: #881337;
+    --badge-enemy-border: #fda4af;
+
+    --badge-neutral-bg: #f1f5f9;
+    --badge-neutral-text: #0f172a;
+    --badge-neutral-border: #cbd5e1;
+  }
+
+  .dark, [data-theme="dark"] {
+    --badge-rule-bg: rgba(6, 78, 59, 0.7);
+    --badge-rule-text: #a7f3d0;
+    --badge-rule-border: rgba(6, 95, 70, 0.8);
+
+    --badge-eat-bg: rgba(19, 78, 74, 0.7);
+    --badge-eat-text: #99f6e4;
+    --badge-eat-border: rgba(17, 94, 89, 0.8);
+
+    --badge-walk-bg: rgba(120, 53, 15, 0.7);
+    --badge-walk-text: #fde68a;
+    --badge-walk-border: rgba(146, 64, 14, 0.8);
+
+    --badge-sleep-bg: rgba(49, 46, 129, 0.7);
+    --badge-sleep-text: #c7d2fe;
+    --badge-sleep-border: rgba(55, 48, 163, 0.8);
+
+    --badge-die-bg: rgba(136, 19, 55, 0.7);
+    --badge-die-text: #fecdd3;
+    --badge-die-border: rgba(159, 18, 57, 0.8);
+
+    --badge-self-bg: rgba(12, 74, 110, 0.7);
+    --badge-self-text: #bae6fd;
+    --badge-self-border: rgba(3, 105, 161, 0.8);
+
+    --badge-friend-bg: rgba(6, 78, 59, 0.7);
+    --badge-friend-text: #a7f3d0;
+    --badge-friend-border: rgba(6, 95, 70, 0.8);
+
+    --badge-enemy-bg: rgba(136, 19, 55, 0.7);
+    --badge-enemy-text: #fecdd3;
+    --badge-enemy-border: rgba(159, 18, 57, 0.8);
+
+    --badge-neutral-bg: rgba(30, 41, 59, 0.8);
+    --badge-neutral-text: #e2e8f0;
+    --badge-neutral-border: #475569;
+  }
 }
 
 /* Custom smooth scrollbar */
@@ -58,4 +135,52 @@
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #334155;
+}
+
+/* Theme-aware badge component classes */
+.badge-act-Rule {
+  background-color: var(--badge-rule-bg);
+  color: var(--badge-rule-text);
+  border-color: var(--badge-rule-border);
+}
+.badge-act-Eat {
+  background-color: var(--badge-eat-bg);
+  color: var(--badge-eat-text);
+  border-color: var(--badge-eat-border);
+}
+.badge-act-Walk {
+  background-color: var(--badge-walk-bg);
+  color: var(--badge-walk-text);
+  border-color: var(--badge-walk-border);
+}
+.badge-act-Sleep {
+  background-color: var(--badge-sleep-bg);
+  color: var(--badge-sleep-text);
+  border-color: var(--badge-sleep-border);
+}
+.badge-act-Die {
+  background-color: var(--badge-die-bg);
+  color: var(--badge-die-text);
+  border-color: var(--badge-die-border);
+}
+
+.badge-rel-self {
+  background-color: var(--badge-self-bg);
+  color: var(--badge-self-text);
+  border-color: var(--badge-self-border);
+}
+.badge-rel-friend {
+  background-color: var(--badge-friend-bg);
+  color: var(--badge-friend-text);
+  border-color: var(--badge-friend-border);
+}
+.badge-rel-enemy {
+  background-color: var(--badge-enemy-bg);
+  color: var(--badge-enemy-text);
+  border-color: var(--badge-enemy-border);
+}
+.badge-rel-neutral {
+  background-color: var(--badge-neutral-bg);
+  color: var(--badge-neutral-text);
+  border-color: var(--badge-neutral-border);
 }
