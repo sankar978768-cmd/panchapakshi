@@ -289,9 +289,9 @@ export default function App() {
       />
 
       {/* Main Content Body with top & bottom padding compensating for fixed header and bottom nav */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-5 lg:p-6 space-y-5 pt-16 sm:pt-20 pb-24 sm:pb-20">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-5 lg:p-6 space-y-5 pt-24 sm:pt-28 pb-24 sm:pb-20">
         {/* Section 1: Date & Day (Paksha & Day selector) */}
-        <section id="section-date-day" aria-label="Date & Day Selector" className="scroll-mt-16 sm:scroll-mt-20">
+        <section id="section-date-day" aria-label="Date & Day Selector" className="scroll-mt-24 sm:scroll-mt-28">
           <PakshaDaySelector
             selectedPaksha={selectedPaksha}
             selectedDay={selectedDay}
@@ -303,7 +303,7 @@ export default function App() {
         </section>
 
         {/* Section 2: Location (Sunrise, sunset & custom location calculations) */}
-        <section id="section-location" aria-label="Sunrise, Sunset & Location" className="scroll-mt-16 sm:scroll-mt-20">
+        <section id="section-location" aria-label="Sunrise, Sunset & Location" className="scroll-mt-24 sm:scroll-mt-28">
           <SunriseSunsetBar
             sunriseTime={sunriseTime}
             sunsetTime={sunsetTime}
@@ -317,7 +317,7 @@ export default function App() {
         </section>
 
         {/* Section 3: Bird (Bird selector and real-time status banner) */}
-        <section id="section-bird" aria-label="Bird Selection & Status" className="scroll-mt-16 sm:scroll-mt-20 space-y-5">
+        <section id="section-bird" aria-label="Bird Selection & Status" className="scroll-mt-24 sm:scroll-mt-28 space-y-5">
           <BirdSelector
             selectedBird={selectedBird}
             onSelectBird={(id) => setSelectedBird(id)}
@@ -332,7 +332,7 @@ export default function App() {
         </section>
 
         {/* Section 4: Activity (10 Jamas cards, activity chart, and master table) */}
-        <section id="section-activity" aria-label="Jamas & Activity Cycles" className="scroll-mt-16 sm:scroll-mt-20 space-y-5">
+        <section id="section-activity" aria-label="Jamas & Activity Cycles" className="scroll-mt-24 sm:scroll-mt-28 space-y-5">
           {/* Navigation Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E8DFCE] dark:border-slate-800 pb-3">
             {/* Main Views */}

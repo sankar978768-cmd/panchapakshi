@@ -28,6 +28,18 @@
     color: #f8fafc;
   }
 
+  @media (max-width: 399px) {
+    .date-chip-calendar-icon {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 400px) {
+    .date-chip-calendar-icon {
+      display: inline-block !important;
+    }
+  }
+
   /* Theme-aware badge text & background variables for WCAG AA/AAA compliance */
   :root {
     --badge-rule-bg: #d1fae5;
