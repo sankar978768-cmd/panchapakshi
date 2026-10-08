@@ -3,6 +3,8 @@
 export interface LocationCoords {
   lat: number;
   lng: number;
+  timezone?: string;
+  timezoneOffset?: number;
 }
 
 export interface LocationTimezoneInfo {
@@ -11,12 +13,37 @@ export interface LocationTimezoneInfo {
   timezoneName: string;
 }
 
+export interface TargetLocationCurrentMoment {
+  localDate: Date;
+  dateString: string;
+  timeString: string;
+  timeString24: string;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  dayName: string;
+  dayOfWeek: number;
+  formattedText: string;
+  offsetMinutes: number;
+}
+
 /**
  * Calculates timezone information for given geographic coordinates.
  * Provides accurate offline timezone offsets for major regions and coordinates.
  */
 export function getLocationTimezoneInfo(coords: LocationCoords): LocationTimezoneInfo {
   const { lat, lng } = coords;
+
+  // If explicit timezoneOffset is provided (e.g. from built-in cities list)
+  if (typeof coords.timezoneOffset === 'number' && !isNaN(coords.timezoneOffset)) {
+    const offsetHours = coords.timezoneOffset;
+    const offsetMinutes = Math.round(offsetHours * 60);
+    return {
+      offsetMinutes,
+      offsetHours,
+      timezoneName: coords.timezone || 'UTC',
+    };
+  }
 
   // Indian subcontinent (India & Sri Lanka: UTC+5:30)
   if (lat >= 5 && lat <= 38 && lng >= 68 && lng <= 98) {
@@ -87,6 +114,52 @@ export function getLocationTimezoneInfo(coords: LocationCoords): LocationTimezon
   return {
     offsetMinutes: estimatedMinutes,
     offsetHours: estimatedHours,
-    timezoneName: systemTz,
+    timezoneName: coords.timezone || systemTz,
+  };
+}
+
+/**
+ * Calculates current moment and date representation in the target location's timezone.
+ */
+export function getTargetLocationCurrentMoment(
+  offsetMinutes: number,
+  refDate: Date = new Date()
+): TargetLocationCurrentMoment {
+  const targetUtcMillis = refDate.getTime() + offsetMinutes * 60 * 1000;
+  const targetDateUtc = new Date(targetUtcMillis);
+
+  const year = targetDateUtc.getUTCFullYear();
+  const month = targetDateUtc.getUTCMonth();
+  const date = targetDateUtc.getUTCDate();
+  const hours = targetDateUtc.getUTCHours();
+  const minutes = targetDateUtc.getUTCMinutes();
+  const seconds = targetDateUtc.getUTCSeconds();
+  const dayOfWeek = targetDateUtc.getUTCDay();
+
+  // Create a Date object whose standard date getters match local target time
+  const localDate = new Date(year, month, date, hours, minutes, seconds);
+
+  const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
+  const timeString24 = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const hours12 = hours % 12 === 0 ? 12 : hours % 12;
+  const timeString = `${hours12}:${String(minutes).padStart(2, '0')} ${period}`;
+
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const dayName = dayNames[dayOfWeek];
+  const formattedText = `${timeString}, ${dayName} (${dateString})`;
+
+  return {
+    localDate,
+    dateString,
+    timeString,
+    timeString24,
+    hours,
+    minutes,
+    seconds,
+    dayName,
+    dayOfWeek,
+    formattedText,
+    offsetMinutes,
   };
 }
