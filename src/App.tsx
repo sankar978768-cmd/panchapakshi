@@ -13,6 +13,7 @@ import { JamaCard } from './components/JamaCard';
 import { MasterTableView } from './components/MasterTableView';
 import { TimeLookupModal } from './components/TimeLookupModal';
 import { RealTimeCalendarModal } from './components/RealTimeCalendarModal';
+import { BirdSelectModal } from './components/BirdSelectModal';
 import { ActivityChartView } from './components/ActivityChartView';
 import { getLunarDayInfo } from './utils/lunarCalendar';
 import { useLanguage } from './context/LanguageContext';
@@ -63,6 +64,7 @@ export default function App() {
     return new Date();
   });
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
+  const [isBirdSelectModalOpen, setIsBirdSelectModalOpen] = useState(false);
   const [customDaysVersion, setCustomDaysVersion] = useState<number>(0);
 
   const [activeTab, setActiveTab] = useState<'jamas' | 'chart' | 'master'>('jamas');
@@ -544,10 +546,20 @@ export default function App() {
         selectedDate={selectedCalendarDate}
       />
 
+      {/* Bird Selection Popup Modal */}
+      <BirdSelectModal
+        isOpen={isBirdSelectModalOpen}
+        onClose={() => setIsBirdSelectModalOpen(false)}
+        selectedBird={selectedBird}
+        onSelectBird={(id) => setSelectedBird(id)}
+      />
+
       {/* Equal 4-Column Layout Fixed Bottom Navigation Bar */}
       <FixedBottomNav
         activeSection={activeSection}
         onScrollToSection={scrollToSection}
+        selectedBird={selectedBird}
+        onOpenBirdSelectModal={() => setIsBirdSelectModalOpen(true)}
       />
     </div>
   );

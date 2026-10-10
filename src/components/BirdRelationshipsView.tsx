@@ -26,9 +26,7 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
     language,
     t,
     getBirdName,
-    getElementName,
     getDirectionName,
-    getPlanetName,
     getRelationshipName,
     getPakshaName,
   } = useLanguage();
@@ -121,7 +119,7 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400 mt-0.5">
-                {t('elementLabel')} {getElementName(selectedBird)} • {t('directionLabel')} {getDirectionName(selectedBird)} • {t('planetLabel')} {getPlanetName(selectedBird)}
+                {t('directionLabel')} {getDirectionName(selectedBird)}
               </p>
             </div>
           </div>
@@ -176,9 +174,6 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
                         <div className="font-bold text-xs text-white group-hover:text-emerald-300 transition-colors">
                           {fName}
                         </div>
-                        <div className="text-[10px] text-slate-400 font-mono">
-                          {getElementName(friendId)}
-                        </div>
                       </div>
                     </div>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
@@ -215,7 +210,7 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
                   <button
                     key={enemyId}
                     onClick={() => onSelectBird(enemyId)}
-                    className="w-full flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-rose-500/20 text-left transition-all cursor-pointer group"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-855 border border-rose-500/20 text-left transition-all cursor-pointer group"
                   >
                     <div className="flex items-center gap-2.5">
                       <span
@@ -231,9 +226,6 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
                       <div>
                         <div className="font-bold text-xs text-white group-hover:text-rose-300 transition-colors">
                           {eName}
-                        </div>
-                        <div className="text-[10px] text-slate-400 font-mono">
-                          {getElementName(enemyId)}
                         </div>
                       </div>
                     </div>
@@ -293,9 +285,6 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
                           <div className="font-bold text-xs text-white group-hover:text-slate-200 transition-colors">
                             {nName}
                           </div>
-                          <div className="text-[10px] text-slate-400 font-mono">
-                            {getElementName(neutralId)}
-                          </div>
                         </div>
                       </div>
                       <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-semibold border border-slate-700">
@@ -330,7 +319,6 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
             <thead className="bg-slate-950 text-slate-400 uppercase tracking-wider text-[10px] font-semibold border-b border-slate-800">
               <tr>
                 <th scope="col" className="py-3 px-4">{t('thMatrixBird')}</th>
-                <th scope="col" className="py-3 px-4">{t('thMatrixElement')}</th>
                 <th scope="col" className="py-3 px-4">{t('thMatrixFriends')}</th>
                 <th scope="col" className="py-3 px-4">{t('thMatrixEnemies')}</th>
                 <th scope="col" className="py-3 px-4">{t('thMatrixNeutrals')}</th>
@@ -377,16 +365,8 @@ export const BirdRelationshipsView: React.FC<BirdRelationshipsViewProps> = ({
                               </span>
                             )}
                           </div>
-                          <div className="text-[10px] text-slate-400 font-mono">
-                            {getElementName(bId)}
-                          </div>
                         </div>
                       </div>
-                    </td>
-
-                    {/* Element */}
-                    <td className="py-3 px-4 text-slate-300">
-                      {getElementName(bId)}
                     </td>
 
                     {/* Friends */}

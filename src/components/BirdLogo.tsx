@@ -68,7 +68,7 @@ export const BirdLogo: React.FC<BirdLogoProps> = ({
         borderColor: `${birdInfo.color}40`,
         borderWidth: '1px',
       }}
-      title={`${displayName} (${birdInfo.element})`}
+      title={displayName}
     >
       <span
         className={`flex items-center justify-center shrink-0 rounded-md font-bold leading-none ${sizeClasses.box}`}

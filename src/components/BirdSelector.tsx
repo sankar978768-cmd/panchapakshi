@@ -13,7 +13,7 @@ interface BirdSelectorProps {
 }
 
 export const BirdSelector: React.FC<BirdSelectorProps> = ({ selectedBird, onSelectBird, dayMeta, paksha }) => {
-  const { language, t, getBirdName, getPakshaName, getElementName } = useLanguage();
+  const { language, t, getBirdName, getPakshaName } = useLanguage();
   const birdsList = Object.values(BIRDS);
   const activePaksha = paksha || dayMeta?.paksha || 'valarpirai';
 
@@ -96,9 +96,6 @@ export const BirdSelector: React.FC<BirdSelectorProps> = ({ selectedBird, onSele
                   <h3 className={`font-bold text-sm sm:text-base truncate ${isSelected ? 'text-slate-950 dark:text-white font-extrabold' : 'text-slate-900 dark:text-slate-200'}`}>
                     {bName}
                   </h3>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate leading-tight font-medium">
-                    {getElementName(bird.id)}
-                  </p>
                 </div>
               </div>
 
@@ -134,8 +131,8 @@ export const BirdSelector: React.FC<BirdSelectorProps> = ({ selectedBird, onSele
                     </>
                   )}
                   {!dayRel && !nightRel && (
-                    <span className="text-slate-500 dark:text-slate-400 font-normal">
-                      {getElementName(bird.id)}
+                    <span className="text-slate-400 dark:text-slate-500 font-normal">
+                      {language === 'ta' ? 'இயல்பு' : 'Standard'}
                     </span>
                   )}
                 </div>

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { BirdId, PakshaType, DayOfWeek, DayCalculationMeta } from '../types';
 import { PANCHA_PAKSHI_DAYS } from '../data/panchaPakshiRegistry';
 import { BirdLogo } from './BirdLogo';
+import { BIRD_EMOJIS } from './BirdSelectModal';
 import { useLanguage } from '../context/LanguageContext';
 import {
   Calendar,
@@ -101,15 +102,15 @@ export const FixedTopHeader: React.FC<FixedTopHeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 flex flex-col gap-2">
         {/* ROW 1: [Golden logo] [Date chip] [Location chip] [Calendar] [Search] [Sun] [Language] */}
         <div className="flex items-center gap-1 w-full flex-nowrap overflow-hidden">
-          {/* Golden logo */}
+          {/* Golden logo with selected bird icon */}
           <button
             type="button"
             onClick={() => onScrollToSection('section-bird')}
             className="w-[30px] h-[30px] rounded-lg bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm border border-slate-200 dark:border-slate-800 shrink-0 cursor-pointer select-none active:scale-95 transition-all shadow-2xs"
-            title="Pancha Pakshi"
-            aria-label="Pancha Pakshi logo"
+            title={`${getBirdName(selectedBird)} (Pancha Pakshi)`}
+            aria-label={`${getBirdName(selectedBird)} logo`}
           >
-            🦅
+            {BIRD_EMOJIS[selectedBird] || '🦅'}
           </button>
 
           {/* Date chip */}
